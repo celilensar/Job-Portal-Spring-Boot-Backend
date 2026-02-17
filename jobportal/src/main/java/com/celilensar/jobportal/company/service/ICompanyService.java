@@ -1,4 +1,4 @@
-package com.celilensar.jobportal.service;
+package com.celilensar.jobportal.company.service;
 
 import com.celilensar.jobportal.dto.CompanyDto;
 import com.celilensar.jobportal.entity.Company;

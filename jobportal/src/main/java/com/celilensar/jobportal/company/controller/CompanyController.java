@@ -1,8 +1,7 @@
 package com.celilensar.jobportal.company.controller;
 
 import com.celilensar.jobportal.dto.CompanyDto;
-import com.celilensar.jobportal.entity.Company;
-import com.celilensar.jobportal.service.ICompanyService;
+import com.celilensar.jobportal.company.service.ICompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

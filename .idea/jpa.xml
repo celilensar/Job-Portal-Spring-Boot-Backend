@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository">
+    <option name="reLastEntityCreationPackage" value="jobportal/src/main/java/com/celilensar/jobportal/entity" />
+    <option name="reverseEngineeringLastDbConnectionId" value="e9a5959b-2227-4de0-b380-fb3f9eb945ab" />
+  </component>
+</project>

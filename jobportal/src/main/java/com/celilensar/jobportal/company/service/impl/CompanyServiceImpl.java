@@ -1,9 +1,9 @@
-package com.celilensar.jobportal.service.impl;
+package com.celilensar.jobportal.company.service.impl;
 
 import com.celilensar.jobportal.dto.CompanyDto;
 import com.celilensar.jobportal.entity.Company;
 import com.celilensar.jobportal.repository.CompanyRepository;
-import com.celilensar.jobportal.service.ICompanyService;
+import com.celilensar.jobportal.company.service.ICompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
