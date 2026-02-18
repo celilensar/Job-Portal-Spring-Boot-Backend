@@ -11,7 +11,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "contacts")
-public class Contact {
+public class Contact extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -39,12 +39,6 @@ public class Contact {
 
     @Column(name = "subject", nullable = false)
     private String subject;
-
-    @Column(name = "updated_at")
-    private Instant updatedAt;
-
-    @Column(name = "updated_by", length = 20)
-    private String updatedBy;
 
     @Column(name = "user_type", nullable = false, length = 50)
     private String userType;
