@@ -8,7 +8,7 @@ import { API_BASE_URL } from "./api";
  * Follows the vendor-specific media type format: application/vnd.eazyapp+json;v=1.0
  * Developers can override this in individual requests if needed
  */
-export const DEFAULT_ACCEPT_HEADER = "application/vnd.eazyapp+json;v=1.0";
+export const DEFAULT_ACCEPT_HEADER = "application/vnd.celilapp+json;v=1.0";
 
 /**
  * Create axios instance with default configuration
@@ -27,10 +27,10 @@ const httpClient = axios.create({
  * These endpoints will not include the Authorization header
  */
 const PUBLIC_ENDPOINTS = [
-  "/auth/login",
-  "/auth/register",
-  "/companies",
-  "/contacts",
+  "/auth/login/public",
+  "/auth/register/public",
+  "/companies/public",
+  "/contacts/public",
 ];
 
 /**
@@ -76,7 +76,7 @@ httpClient.interceptors.request.use(
       // If CSRF token is not present in cookies, fetch it from the server
       if (!csrfToken) {
         try {
-          await axios.get(`${API_BASE_URL}/csrf-token`, {
+          await axios.get(`${API_BASE_URL}/csrf-token/public`, {
             withCredentials: true,
           });
           csrfToken = Cookies.get("XSRF-TOKEN");
@@ -87,7 +87,9 @@ httpClient.interceptors.request.use(
         } catch (error) {
           // Ignore 404 errors (endpoint might not be available) and continue
           if (error.response && error.response.status === 404) {
-            console.warn("[CSRF Token] Endpoint not found (404), continuing without CSRF token");
+            console.warn(
+              "[CSRF Token] Endpoint not found (404), continuing without CSRF token"
+            );
           } else {
             console.error("[CSRF Token Error]", error);
             return Promise.reject(error);
@@ -98,12 +100,6 @@ httpClient.interceptors.request.use(
       // Add CSRF token to request header
       config.headers["X-XSRF-TOKEN"] = csrfToken;
     }
-
-    // Log the request for debugging (can be removed in production)
-    console.log(`[HTTP Request] ${config.method.toUpperCase()} ${config.url}`, {
-      headers: config.headers,
-      data: config.data,
-    });
 
     return config;
   },
@@ -119,17 +115,6 @@ httpClient.interceptors.request.use(
  */
 httpClient.interceptors.response.use(
   (response) => {
-    // Log the response for debugging (can be removed in production)
-    console.log(
-      `[HTTP Response] ${response.config.method.toUpperCase()} ${
-        response.config.url
-      }`,
-      {
-        status: response.status,
-        data: response.data,
-      }
-    );
-
     return response;
   },
   (error) => {
